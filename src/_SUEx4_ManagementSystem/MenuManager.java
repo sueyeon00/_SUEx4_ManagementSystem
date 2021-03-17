@@ -9,38 +9,57 @@ public class MenuManager {
 		int num = 0;
 		Scanner input = new Scanner (System.in);
 		
-		while(num != 6) {
-			System.out.println("1. Add Students");
-			System.out.println("2. Delete Students");
-			System.out.println("3. Edit Students");
-			System.out.println("4. View Students");
-			System.out.println("5. Show a Menu");
-			System.out.println("6. Exit");
-			System.out.println("Select one number between 1-6:");
+		while(num != 7) {
+			System.out.println("1. A delicious restaurant ");
+			System.out.println("2. An atmospheric restaurant");
+			System.out.println("3. A pretty cafe");
+			System.out.println("4. Delicious cafe");
+			System.out.println("5. A famous place");
+			System.out.println("6. Show a menu");
+			System.out.println("7. Exit");
+			System.out.println("Select one number between 1-7:");
 			num = input.nextInt();
+			
+			
+			if( num < 1 || num > 7){
+			    System.out.println("You should select one number between 1-7");
+			    System.out.println();
+			    continue;
+			}
 		
-		    if(num == 1) {
-			    System.out.print("Student Id:");
-			    int studentId = input.nextInt();
-			    System.out.print("Studend Name:");
-			    String studentName = input.next();
-			    System.out.print("Studend E-mail address:");
-			    String studentEAddress = input.next();
-			    System.out.print("Studend phone number:");
-			    int studentPNumber = input.nextInt();
+			else if(num < 3) {
+            System.out.print("Restaurant Name: ");
+		    String RName = input.next();
+		    System.out.print("Restaurant Location:");			    
+		    String RLocation = input.next();
+		    System.out.print("Restaurant Number: ");
+		    int RNumber = input.nextInt();
+		    System.out.print("Type of food:");			    
+		    String TOF = input.next();
+		    System.out.print("Main Dish:");
+		    String MainDish = input.next();
+			    
+			    
 		    }
-		    else if(num<5) {
-			    System.out.print("Student Id:");
-			    int studentId = input.nextInt();
+		    else if(num < 5) {
+		    	System.out.print("Cafe Name: ");
+			    String CName = input.next();
+			    System.out.print("Cafe Location:");
+			    String CLocation = input.next();
+			    System.out.print("Cafe Number: ");
+			    int CNumber = input.nextInt();
+			    System.out.print("Dessert:");
+			    String Dessert = input.next();
+			    
 	    	}
-		    else if(num == 5) {
+		    else if(num == 6) {
 		    	continue;
 		    }
-		    else if(num == 6) {
+		    else if(num == 7) {
 		    	break;
 		    }    
-		    else {
-			    System.out.println("You should select one number between 1-6");
+		    else if( num < 1 || num > 7){
+			    System.out.println("You should select one number between 1-7");
 			    System.out.println();
 			    continue;
 			
