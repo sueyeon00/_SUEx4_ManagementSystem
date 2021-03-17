@@ -1,5 +1,5 @@
 package _SUEx4_ManagementSystem;
-
+//진주 내에 있는 가볼만한 식당과 카페 관리 리스트
 import java.util.Scanner;
 
 public class MenuManager {
@@ -28,7 +28,7 @@ public class MenuManager {
 			}
 		
 			else if(num < 3) {
-            System.out.print("Restaurant Name: ");
+                    System.out.print("Restaurant Name: ");
 		    String RName = input.next();
 		    System.out.print("Restaurant Location:");			    
 		    String RLocation = input.next();
