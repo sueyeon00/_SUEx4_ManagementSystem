@@ -28,21 +28,21 @@ public class MenuManager {
 			}
 		
 			else if(num < 3) {
-                    System.out.print("Restaurant Name: ");
-		    String RName = input.next();
-		    System.out.print("Restaurant Location:");			    
-		    String RLocation = input.next();
-		    System.out.print("Restaurant Number: ");
-		    int RNumber = input.nextInt();
-		    System.out.print("Type of food:");			    
-		    String TOF = input.next();
-		    System.out.print("Main Dish:");
-		    String MainDish = input.next();
+                            System.out.print("Restaurant Name: ");
+		            String RName = input.next();
+		            System.out.print("Restaurant Location:");			    
+		            String RLocation = input.next();
+		            System.out.print("Restaurant Number: ");
+		            int RNumber = input.nextInt();
+		            System.out.print("Type of food:");			    
+		            String TOF = input.next();
+		            System.out.print("Main Dish:");
+		            String MainDish = input.next();
 			    
 			    
-		    }
-		    else if(num < 5) {
-		    	System.out.print("Cafe Name: ");
+		        }
+		        else if(num < 5) {
+		    	    System.out.print("Cafe Name: ");
 			    String CName = input.next();
 			    System.out.print("Cafe Location:");
 			    String CLocation = input.next();
@@ -51,7 +51,7 @@ public class MenuManager {
 			    System.out.print("Dessert:");
 			    String Dessert = input.next();
 			    
-	    	}
+	    	    }
 		    else if(num == 6) {
 		    	continue;
 		    }
