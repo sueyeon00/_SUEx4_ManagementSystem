@@ -29,7 +29,6 @@ public class MenuManager {
 			else if(num < 3) {
 				restaurant();     
 		    }
-			
 		    else if(num < 5) {
 		    	cafe();
 	    	}
