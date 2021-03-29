@@ -36,9 +36,9 @@ public class MenuManager {
 		    	place();
 		    }
  		    else if(num == 7) {
-		    	System.out.println("나가고 싶니 그럼 아무 키나 눌러봐");
-		    	String Exit = input.next();
-		    	System.out.println("ㅃ2");
+		    	//System.out.println("나가고 싶니 그럼 아무 키나 눌러봐");
+		    	//String Exit = input.next();
+		    	//System.out.println("ㅃ2");
 		    	break;
 		    }  
 		}
