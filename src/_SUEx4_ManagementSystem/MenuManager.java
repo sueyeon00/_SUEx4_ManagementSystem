@@ -1,5 +1,5 @@
 package _SUEx4_ManagementSystem;
-//ÁøÁÖ ½Ã³» °¡º¼¸¸ÇÑ ½Ä´ç, Ä«Æä, Àå¼Ò °ü¸® ÇÁ·Î±×·¥
+
 import java.util.Scanner;
 
 public class MenuManager {
@@ -36,9 +36,9 @@ public class MenuManager {
 		    	place();
 		    }
  		    else if(num == 7) {
-		    	//System.out.println("³ª°¡°í ½Í´Ï ±×·³ ¾Æ¹« Å°³ª ´­·¯ºÁ");
+		    	//System.out.println("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Í´ï¿½ ï¿½×·ï¿½ ï¿½Æ¹ï¿½ Å°ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 		    	//String Exit = input.next();
-		    	//System.out.println("¤³2");
+		    	//System.out.println("ï¿½ï¿½2");
 		    	break;
 		    }  
 		}
