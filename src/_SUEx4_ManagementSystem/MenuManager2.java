@@ -1,5 +1,5 @@
 package _SUEx4_ManagementSystem;
-//진주 시내 가볼만한 식당, 카페, 장소 관리 프로그램
+//진주 시내 가볼만한 식당, 카페, 장소 관리 프로그램...
 import java.util.Scanner;
 
 public class MenuManager2 {
