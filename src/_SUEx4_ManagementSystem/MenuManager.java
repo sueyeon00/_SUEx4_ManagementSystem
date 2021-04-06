@@ -6,73 +6,69 @@ public class MenuManager {
 
 	public static void main(String[] args)
 	{
-		int num = 0;
-		Scanner input = new Scanner (System.in);
 		
-		while(num != 7) {
-			System.out.println("1. A delicious restaurant ");
-			System.out.println("2. An atmospheric restaurant");
-			System.out.println("3. A pretty cafe");
-			System.out.println("4. Delicious cafe");
-			System.out.println("5. A famous place");
-			System.out.println("6. Show a menu");
-			System.out.println("7. Exit");
-			System.out.println("Select one number between 1-7:");
+		Scanner input = new Scanner (System.in);
+		Placemanager placemanager = new Placemanager(input);
+		String ROC;    //res or cafe 
+		int num = -1;
+		while(num != 6) {
+			System.out.println("-------------------");
+			System.out.println("1. add restaurant ");
+			System.out.println("2. add cafe");
+			System.out.println("3. delete place");
+			System.out.println("4. edit place");
+			System.out.println("5. view place ");
+			System.out.println("6. Exit");
+			System.out.println("Select one number between 1-6:");
 			num = input.nextInt();
 			
-			if( num < 1 || num > 7){
-			    System.out.println("You should select one number between 1-7");
+			
+			if( num < 1 || num > 6){
+			    System.out.println("You should select one number between 1-6");
 			    System.out.println();
 			    continue;
 			}
 		
-			else if(num < 3) {
-				restaurant();     
+			else if(num == 1) {
+				placemanager.restaurant();     
 		    }
-		    else if(num < 5) {
-		    	cafe();
+		    else if(num == 2) {
+		    	placemanager.cafe();
 	    	}
-		    else if(num == 5) {
-		    	place();
+		    else if(num == 3) {
+		    	System.out.println(" res or cafe ? ");
+		    	ROC = input.next();
+		    	if (ROC.equals("res")) {
+		    		placemanager.Rdelete();
+		    	}
+		    	if(ROC.equals("cafe")){
+		    	    placemanager.Cdelete();
+		        }
 		    }
- 		    else if(num == 7) {
-		    	//System.out.println("������ �ʹ� �׷� �ƹ� Ű�� ������");
-		    	//String Exit = input.next();
-		    	//System.out.println("��2");
+		    else if(num == 4) {
+		    	System.out.println(" res or cafe ? ");
+		    	ROC = input.next();
+		    	if (ROC.equals("res")) {
+		    		placemanager.Redit();
+		    	}
+		    	if(ROC.equals("cafe")){
+		    	    placemanager.Cedit();
+		        }
+		    }
+		    else if(num == 5) {
+		    	System.out.println(" res or cafe ? ");
+		    	ROC = input.next();
+		    	if (ROC.equals("res")) {
+		    		placemanager.Rview();
+		    	}
+		    	if(ROC.equals("cafe")){
+		    	    placemanager.Cview();
+		        }
+		    }
+ 		    else if(num == 6) {
 		    	break;
 		    }  
 		}
     }
-	public static void restaurant() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Restaurant Name: ");
-	    String RName = input.next();
-	    System.out.print("Restaurant Location:");			    
-	    String RLocation = input.next();
-	    System.out.print("Restaurant Number: ");
-	    int RNumber = input.nextInt();
-	    System.out.print("Type of food:");			    
-	    String TOF = input.next();
-	    System.out.print("Main Dish:");
-	    String MainDish = input.next();
-	}
-	public static void cafe() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Cafe Name: ");
-	    String CName = input.next();
-	    System.out.print("Cafe Location:");
-	    String CLocation = input.next();
-	    System.out.print("Cafe Number: ");
-	    int CNumber = input.nextInt();
-	    System.out.print("Dessert:");
-	    String Dessert = input.next();
-	}
-	public static void place() {
-		Scanner input = new Scanner(System.in);
-		System.out.print("Place name: ");
-	    String PName = input.next();
-	    System.out.print("Place Location:");
-	    String PLocation = input.next();
-	}
 
 }
