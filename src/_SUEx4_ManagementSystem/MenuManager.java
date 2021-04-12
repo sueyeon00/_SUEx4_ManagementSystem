@@ -17,7 +17,7 @@ public class MenuManager {
 			System.out.println("2. add cafe");
 			System.out.println("3. delete place");
 			System.out.println("4. edit place");
-			System.out.println("5. view place ");
+			System.out.println("5. view places ");
 			System.out.println("6. Exit");
 			System.out.println("Select one number between 1-6:");
 			num = input.nextInt();
@@ -30,10 +30,10 @@ public class MenuManager {
 			}
 		
 			else if(num == 1) {
-				placemanager.restaurant();     
+				placemanager.Arestaurant();     
 		    }
 		    else if(num == 2) {
-		    	placemanager.cafe();
+		    	placemanager.Acafe();
 	    	}
 		    else if(num == 3) {
 		    	System.out.println(" res or cafe ? ");
@@ -59,10 +59,10 @@ public class MenuManager {
 		    	System.out.println(" res or cafe ? ");
 		    	ROC = input.next();
 		    	if (ROC.equals("res")) {
-		    		placemanager.Rview();
+		    		placemanager.Rviews();
 		    	}
 		    	if(ROC.equals("cafe")){
-		    	    placemanager.Cview();
+		    	    placemanager.Cviews();
 		        }
 		    }
  		    else if(num == 6) {

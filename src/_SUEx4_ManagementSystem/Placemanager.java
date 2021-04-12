@@ -1,100 +1,228 @@
 package _SUEx4_ManagementSystem;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
+import Cafe.Cafe;
+import Restaruant.Kind2res;
+import Restaruant.Restaruant;
+
 public class Placemanager {
-	Restaruant res;
-	Cafe cafe;
-	Scanner input;
-	
+	ArrayList<Restaruant> restaruants = new ArrayList<Restaruant>();
+	ArrayList<Cafe> cafes = new ArrayList<Cafe>();
+	Scanner input; 
+	Restaruant res = new Restaruant();  ////edit 에서 res.set();해주려고 만듦
+	Cafe cafe = new Cafe();             ////
 	Placemanager(Scanner input){
 		this.input = input;
 	}
 	
-	public void restaurant() {
-		res = new Restaruant();
-		System.out.print("Restaurant Name: ");
-	    res.name = input.next();
-	    System.out.print("Restaurant Location:");			    
-	    res.Location = input.next();
-	    System.out.print("Restaurant Number: ");
-	    res.number = input.nextInt();
-	    System.out.print("Type of food:");			    
-	    res.Type = input.next();
-	    System.out.print("Main Dish:");
-	    res.MainDish = input.next();
+	public void Arestaurant() {
+		int kind =0;
+		Restaruant res;
+		while(kind != 1 && kind != 2) {
+			System.out.println("1 --> 학교 밖");
+			System.out.println("2 --> 학교 근처 ");
+			System.out.print("Select 1 or 2 !! ");
+			kind = input.nextInt();
+			if( kind == 1) {
+				res = new Restaruant();
+				res.getUserInput(input);
+				restaruants.add(res);            //리스트에 추가됨
+				break;
+			}
+			else if( kind == 2) {
+				res = new Kind2res();
+				res.getUserInput(input);
+				restaruants.add(res);            //리스트에 추가됨
+				break;
+			}
+			else {
+				System.out.print("Select 1 or 2 !! ");
+			}
+		}
+			    
 	}
-	public void cafe() {
-		cafe = new Cafe();
-		System.out.print("Cafe Name: ");
-	    cafe.name = input.next();
-	    System.out.print("Cafe Location:");
-	    cafe.Location = input.next();
-	    System.out.print("Cafe Number: ");
-	    cafe.number = input.nextInt();
-	    System.out.print("Mood: ");
-	    cafe.mood = input.next();
-	    System.out.print("Dessert:");
-	    cafe.Dessert = input.next();
+	public void Acafe() {
+		int kind = 0;
+		Cafe cafe;
+		while(kind != 1 && kind != 2) {
+			System.out.println("1 --> 학교 밖");
+			System.out.println("2 --> 학교 근처 ");
+			System.out.print("Select 1 or 2 !! ");
+			kind = input.nextInt();
+			if( kind == 1) {
+				cafe = new Cafe();
+				cafe.getUserInput(input);
+				cafes.add(cafe);            //리스트에 추가됨
+				break;
+			}
+			else if( kind == 2) {
+				cafe = new Cafe();
+				cafe.getUserInput(input);
+				cafes.add(cafe);            //리스트에 추가됨
+				break;
+			}
+			else {
+				System.out.print("Select 1 or 2 !! ");
+			}
+		}
+		
 	}
+	    
 	public void Rdelete() {
 		System.out.print("Place name: ");
 	    String Name = input.next();
-	   if(res== null){
+	    int index = -1;
+	    for( int i = 0; i<restaruants.size(); i++) {
+	    	if(restaruants.get(i).getName() == Name) {
+		    	index = i;
+		    	break;
+		    }
+	    }
+	    if(index >= 0) {
+	    	restaruants.remove(index);
+	    	System.out.println("the restaruant <"+ Name+ "> is deleted");
+	    }
+	    else
 	    	System.out.println("the restaruant not registered");
 	    	return;
 	    }
-	    if(res.name.equals(Name)) {
-	    	res = null;
-	    	System.out.println("the restaruant is deleted");
-	    }
-	}
+	    
+	
 	public void Cdelete() {
 		System.out.print("Place name: ");
 	    String Name = input.next();
-	    if(cafe == null) {
-	    	System.out.println("the cafe not registered");
+	    int index = -1;
+	    for( int i = 0; i < cafes.size(); i++) {
+	    	if(cafes.get(i).getName() == Name) {
+	    		index = i;
+	    		break;
+	    	}
+	    }
+	    	
+	    if(index >= 0) {
+	    	cafes.remove(index);
+	    	System.out.println("the cafe <" + Name +"> is deleted");
 	    	return;
 	    }           
-	    if(cafe.name.equals(Name)) {
-	    	cafe = null;
-	    	System.out.println("the cafe is deleted");
-	    }
-	}
-	public void Redit() {
+	    else
+	    	System.out.println("the cafe not registered");
+	    return;
+	    };
+	
+	public void Redit() { 
 		System.out.print("Place name: ");
 	    String Name = input.next();
-	    if(res.name.equals(Name) ) {
-	    	System.out.println("the restaurant to be edited is "+"<"+ Name +">");
+	    for( int i = 0; i<restaruants.size(); i++){
+	    	if(restaruants.get(i).getName() == Name) {
+	    		int num = -1;
+	    		while(num != 6) {
+		    		System.out.println("*** Restaurant Info Edit Menu ***");
+		    		System.out.println(" 1. Edit name");
+		    		System.out.println(" 2. Edit location");
+		    		System.out.println(" 3. Edit number");
+		    		System.out.println(" 4. Edit type");
+		    		System.out.println(" 5. Edit maindish");
+		    		System.out.println(" 6. Exit");
+		    		num = input.nextInt();
+		    		if(num == 1) {
+		    			System.out.print("Restaurant name: ");
+		    			String name = input.next();
+		    			res.setName(name);
+		    		}
+		    		else if( num == 2) {
+		    			System.out.print("Restaurant Location:");	
+		    		    String Location = input.next();
+		    		    res.setLocation(Location);
+		    		}
+		    		else if( num == 3) {
+		    			System.out.print("Restaurant Number: ");
+		    		    int number = input.nextInt();
+		    		    res.setNumber(number);
+		    		}
+		    		else if( num == 4) {
+		    			System.out.print("Type of food:");			    
+		    		    String Type = input.next();
+		    		    res.setType(Type);
+		    		}
+		    		else if( num == 5) {
+		    			System.out.print("Main Dish:");
+		    			String MainDish = input.next();
+		    		    res.setMainDish(MainDish);
+		    		}
+		    		else {
+		    			continue;
+		    		}//if
+	    		}//while
+	    		System.out.println("the restaurant to be edited is "+"<"+ Name +">");
+	    		break;
+	    	}//if
+	    }//for
+	    
 	    } 
-	}
+	
 	public void Cedit() {
 		System.out.print("Place name: ");
 	    String Name = input.next();
-	    if(cafe.name.equals(Name)) {
-	    	System.out.println("the cafe to be edited is "+"<"+ Name +">");
-	    }
+	    for( int i = 0; i<cafes.size(); i++){
+	    	if(cafes.get(i).getName() == Name) {
+	    		int num = -1;
+	    		while(num != 6) {
+		    		System.out.println("*** Cafe Info Edit Menu ***");
+		    		System.out.println(" 1. Edit name");
+		    		System.out.println(" 2. Edit location");
+		    		System.out.println(" 3. Edit number");
+		    		System.out.println(" 4. Edit mood");
+		    		System.out.println(" 5. Edit dessert");
+		    		System.out.println(" 6. Exit");
+		    		num = input.nextInt();
+		    		if(num == 1) {
+		    			System.out.print("Restaurant name: ");
+		    			String name = input.next();
+		    			cafe.setName(name);
+		    		}
+		    		else if( num == 2) {
+		    			System.out.print("Restaurant Location:");			    
+		    		    String Location = input.next();
+		    		    cafe.setLocation(Location);
+		    		}
+		    		else if( num == 3) {
+		    			System.out.print("Restaurant Number: ");
+		    		    int number = input.nextInt();
+		    		    cafe.setNumber(number);
+		    		}
+		    		else if( num == 4) {
+		    			System.out.print("Type of mood:");			    
+		    		    String mood = input.next();
+		    		    cafe.setMood(mood);
+		    		}
+		    		else if( num == 5) {
+		    			System.out.print("dessert:");
+		    		    String Dessert = input.next();
+		    		    cafe.setDessert(Dessert);
+		    		}
+		    		else {
+		    			continue;
+		    		}//if
+	    		}//while
+	    		System.out.println("the cafe to be edited is "+"<"+ Name +">");
+	    		break;
+	    	}//if
+	    }//for	
 	}
-	public void Rview() {
-		System.out.print("Place name: ");
-	    String Name = input.next();
-	    if(res== null) {
-	    	System.out.println("다시 ");
-	    	return;           
-	    }
-	    if(res.name.equals(Name)) {
-	    	res.printInfo();
+	public void Rviews() {
+		System.out.println("of resistered restaruants : "+restaruants.size() );
+		System.out.println("***Restaruant***");
+	    for( int i = 0; i<restaruants.size(); i++) {
+	    	restaruants.get(i).printInfo();
 	    }
 	 }
-	public void Cview() {
-		System.out.print("Place name: ");
-	    String Name = input.next();
-	    if(cafe == null) {
-	    	System.out.println("다시 ");
-	    	return;  
-	    }
-	    if(cafe.name.equals(Name)) {
-	    	cafe.printInfo();
+	public void Cviews() {
+		System.out.println("of resistered cafes : "+ cafes.size());
+		System.out.println("***Cafe***");
+	    for( int i = 0; i < cafes.size(); i++) {
+	    	cafes.get(i).printInfo();
 	    }
 	}
 	    
