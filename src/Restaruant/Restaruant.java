@@ -14,7 +14,18 @@ public class Restaruant {
 	public Restaruant() {  //생성자
 		
 	}
+    public Restaruant(Restaurantkind kind) {  //생성자
+		this.kind = kind;
+	}
 	public Restaruant(String name, String Location, int number ,String Type, String main) {
+		this.name = name;
+		this.Location = Location;
+		this.number = number;
+		this.Type = Type;
+		this.MainDish = main;
+	}
+	public Restaruant(Restaurantkind kind, String name, String Location, int number ,String Type, String main) {
+		this.kind = kind;
 		this.name = name;
 		this.Location = Location;
 		this.number = number;
@@ -58,8 +69,23 @@ public class Restaruant {
 	public void setMainDish(String mainDish) {
 		MainDish = mainDish;
 	}
+	
 	public void printInfo() {
-		System.out.println("*name: "+ name + " *location: " + Location + 
+		String rkind = "none";
+		switch(this.kind) {
+		case kind1:
+			rkind = "학교 밖";
+			break;
+		case kind2:
+			rkind = "학교 근처";
+			break;
+		case kind3:
+			rkind = "그 외";
+			break;
+		default:
+			
+		}
+		System.out.println("*kind:" + rkind +"*name: "+ name + " *location: " + Location + 
 				" *Number: " + number + " *Type: "+ Type + " *MainDish: "+ MainDish);
 	}
 	public void getUserInput(Scanner input) {

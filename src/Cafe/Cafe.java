@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class Cafe {
 	
-	
 	protected Cafekind kind = Cafekind.kind1;
 	protected String name;
 	protected String Location;
@@ -14,7 +13,18 @@ public class Cafe {
     public Cafe() {
 		
 	}
+    public Cafe(Cafekind kind) {
+		this.kind = kind;
+   	}
 	public Cafe(String name, String Location, int number, String mood, String dessert) {
+		this.name = name;
+		this.Location = Location;
+		this.number = number;
+		this.mood = mood;
+		this.Dessert = dessert;
+	}
+	public Cafe(Cafekind kind, String name, String Location, int number, String mood, String dessert) {
+		this.kind = kind;
 		this.name = name;
 		this.Location = Location;
 		this.number = number;
@@ -59,9 +69,22 @@ public class Cafe {
 		Dessert = dessert;
 	}
 	public void printInfo() {
-		System.out.println();
-		System.out.println("*name: "+ name + " *location: " + Location +
-				" *Number: "+ number + " *Mood: "+ mood + " *Dessert: "+ Dessert);
+		String ckind = "none";
+		switch(this.kind) {
+		case kind1:
+			ckind = "학교 밖";
+			break;
+		case kind2:
+			ckind = "학교 근처";
+			break;
+		case kind3:
+			ckind = "그 외";
+			break;
+		default:
+			
+		}
+		System.out.println("*kind:" + ckind +"*name: "+ name + " *location: " + Location + 
+				" *Number: " + number + " *Mood: "+ mood + " *Dessert: "+ Dessert);
 	}
 	public void getUserInput(Scanner input) {
 		System.out.print("Cafe Name: ");

@@ -4,8 +4,11 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import Cafe.Cafe;
+import Cafe.Cafekind;
 import Restaruant.Kind2res;
+import Restaruant.Kind3res;
 import Restaruant.Restaruant;
+import Restaruant.Restaurantkind;
 
 public class Placemanager {
 	ArrayList<Restaruant> restaruants = new ArrayList<Restaruant>();
@@ -20,25 +23,32 @@ public class Placemanager {
 	public void Arestaurant() {
 		int kind =0;
 		Restaruant res;
-		while(kind != 1 && kind != 2) {
+		while(kind != 1 && kind != 2 && kind != 3) {
 			System.out.println("1 --> 학교 밖");
 			System.out.println("2 --> 학교 근처 ");
-			System.out.print("Select 1 or 2 !! ");
+			System.out.println("3 --> 그 외 ");
+			System.out.print("Select 1 , 2 or 3 !! ");
 			kind = input.nextInt();
 			if( kind == 1) {
-				res = new Restaruant();
+				res = new Restaruant(Restaurantkind.kind1);
 				res.getUserInput(input);
 				restaruants.add(res);            //리스트에 추가됨
 				break;
 			}
 			else if( kind == 2) {
-				res = new Kind2res();
+				res = new Kind2res(Restaurantkind.kind2);
+				res.getUserInput(input);
+				restaruants.add(res);            //리스트에 추가됨
+				break;
+			}
+			else if( kind == 3) {
+				res = new Kind3res(Restaurantkind.kind3);
 				res.getUserInput(input);
 				restaruants.add(res);            //리스트에 추가됨
 				break;
 			}
 			else {
-				System.out.print("Select 1 or 2 !! ");
+				System.out.print("Select 1 , 2 or 3 !! ");
 			}
 		}
 			    
@@ -46,25 +56,35 @@ public class Placemanager {
 	public void Acafe() {
 		int kind = 0;
 		Cafe cafe;
-		while(kind != 1 && kind != 2) {
+		while(kind != 1 && kind != 2 && kind != 3) {
 			System.out.println("1 --> 학교 밖");
 			System.out.println("2 --> 학교 근처 ");
-			System.out.print("Select 1 or 2 !! ");
+			System.out.println("3 --> 그 외 ");
+			System.out.print("Select 1 , 2 or 3 !! ");
 			kind = input.nextInt();
 			if( kind == 1) {
-				cafe = new Cafe();
+				cafe = new Cafe(Cafekind.kind1);
 				cafe.getUserInput(input);
 				cafes.add(cafe);            //리스트에 추가됨
 				break;
 			}
 			else if( kind == 2) {
+				cafe = new Cafe(Cafekind.kind2);
+				cafe = new Cafe();
+				cafe.getUserInput(input);
+				cafes.add(cafe);            //리스트에 추가됨
+				break;
+				
+			}
+			else if( kind == 3) {
+				cafe = new Cafe(Cafekind.kind3);
 				cafe = new Cafe();
 				cafe.getUserInput(input);
 				cafes.add(cafe);            //리스트에 추가됨
 				break;
 			}
 			else {
-				System.out.print("Select 1 or 2 !! ");
+				System.out.print("Select 1 , 2 or 3 !! ");
 			}
 		}
 		
@@ -75,7 +95,7 @@ public class Placemanager {
 	    String Name = input.next();
 	    int index = -1;
 	    for( int i = 0; i<restaruants.size(); i++) {
-	    	if(restaruants.get(i).getName() == Name) {
+	    	if(restaruants.get(i).getName().equals(Name)) {
 		    	index = i;
 		    	break;
 		    }
@@ -95,7 +115,7 @@ public class Placemanager {
 	    String Name = input.next();
 	    int index = -1;
 	    for( int i = 0; i < cafes.size(); i++) {
-	    	if(cafes.get(i).getName() == Name) {
+	    	if(cafes.get(i).getName().equals(Name)) {
 	    		index = i;
 	    		break;
 	    	}
@@ -115,7 +135,7 @@ public class Placemanager {
 		System.out.print("Place name: ");
 	    String Name = input.next();
 	    for( int i = 0; i<restaruants.size(); i++){
-	    	if(restaruants.get(i).getName() == Name) {
+	    	if(restaruants.get(i).getName().equals(Name)) {
 	    		int num = -1;
 	    		while(num != 6) {
 		    		System.out.println("*** Restaurant Info Edit Menu ***");
@@ -166,7 +186,7 @@ public class Placemanager {
 		System.out.print("Place name: ");
 	    String Name = input.next();
 	    for( int i = 0; i<cafes.size(); i++){
-	    	if(cafes.get(i).getName() == Name) {
+	    	if(cafes.get(i).getName().equals(Name)) {
 	    		int num = -1;
 	    		while(num != 6) {
 		    		System.out.println("*** Cafe Info Edit Menu ***");
