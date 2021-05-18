@@ -2,7 +2,9 @@ package Cafe;
 
 import java.util.Scanner;
 
-public class Cafe {
+import exception.NumberfomatException;
+
+public abstract class Cafe implements Cafe_Input{
 	
 	protected Cafekind kind = Cafekind.kind1;
 	protected String name;
@@ -53,7 +55,10 @@ public class Cafe {
 	public int getNumber() {
 		return number;
 	}
-	public void setNumber(int number) {
+	public void setNumber(int number) throws NumberfomatException{
+		if(number <= 0) {
+			throw new NumberfomatException();
+		}
 		this.number = number;
 	}
 	public String getMood() {
@@ -68,7 +73,41 @@ public class Cafe {
 	public void setDessert(String dessert) {
 		Dessert = dessert;
 	}
-	public void printInfo() {
+	public abstract void printInfo();
+	
+	public void setcafeName(Scanner input) {
+		System.out.print("Cafe name: ");
+		String name = input.next();
+		this.setName(name);
+	}
+	public void setcafeLocation( Scanner input) {
+		System.out.print("Cafe Location: ");
+		String name = input.next();
+		this.setName(name);
+	}
+	public void setcafeNumber(Scanner input) {
+		int number = -1;
+		while(number <= 0) {
+			System.out.print("Cafe Number: ");
+		    number = input.nextInt();
+		    try {
+				this.setNumber(number);
+			} catch (NumberfomatException e) {
+				System.out.println("다시 입력하시오.");
+			}
+		}
+	}
+	public void setcafeMood(Scanner input) {
+		System.out.print("Cafe mood: ");
+		String name = input.next();
+		this.setName(name);
+	}
+	public void setcafeDessert( Scanner input) {
+		System.out.print("Cafe dessert: ");
+		String name = input.next();
+		this.setName(name);
+	}
+	public String getKindString() {
 		String ckind = "none";
 		switch(this.kind) {
 		case kind1:
@@ -81,31 +120,8 @@ public class Cafe {
 			ckind = "그 외";
 			break;
 		default:
-			
 		}
-		System.out.println("*kind:" + ckind +"*name: "+ name + " *location: " + Location + 
-				" *Number: " + number + " *Mood: "+ mood + " *Dessert: "+ Dessert);
-	}
-	public void getUserInput(Scanner input) {
-		System.out.print("Cafe Name: ");
-	    String name = input.next();
-	    this.setName(name);
-	    
-	    System.out.print("Cafe Location:");
-	    String Location = input.next();
-	    this.setLocation(Location);
-	    
-	    System.out.print("Cafe Number: ");
-	    int number = input.nextInt();
-	    this.setNumber(number);
-	    
-	    System.out.print("Mood: ");
-	    String mood = input.next();
-	    this.setMood(mood);
-	    
-	    System.out.print("Dessert:");
-	    String dessert = input.next();
-	    this.setDessert(dessert);
+		return ckind;
 	}
 
 }

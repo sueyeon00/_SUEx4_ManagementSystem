@@ -1,17 +1,15 @@
 package Restaruant;
 
 import java.util.Scanner;
-//益 須
-public class Kind3res extends Restaruant{
+
+public class REstaurant extends Restaruant{
 	
-	public Kind3res(Restaurantkind kind) {  //持失切
+	public REstaurant(Restaurantkind kind) {  //持失切
 		super(kind);
 	}
 	
-	protected String Location_Area; 
-	
 	public void getUserInput(Scanner input) {
-		setResName(input);
+        setResName(input);
 		
 		setResLocation(input);
 		
@@ -27,5 +25,6 @@ public class Kind3res extends Restaruant{
 		System.out.println("*kind:" + rkind +"*name: "+ name + " *location: " + Location + 
 				" *Number: " + number + " *Type: "+ Type + " *MainDish: "+ MainDish);
 	}
-	
+
+
 }

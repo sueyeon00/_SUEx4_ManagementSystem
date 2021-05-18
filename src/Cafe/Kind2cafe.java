@@ -2,16 +2,14 @@ package Cafe;
 
 import java.util.Scanner;
 //학교 근처라서 위치는 정문, 후문으로 나뉨 + 기타 표현 주소 
-public class Kind2cafe extends Cafe {
+public class Kind2cafe extends Cafe{
 	
 	public Kind2cafe(Cafekind kind) {
 		super(kind);
    	}
 	
-	public void getUserInput(Scanner input) {
-		System.out.print("Cafe Name: ");
-	    String name = input.next();
-	    this.setName(name);
+	public void getUserInput(Scanner input) {	    
+	    setcafeName(input);
 	    
 	    char answer ='x';
 		while(answer != 'f' && answer != 'F' && answer != 'b' &&answer != 'B') {
@@ -32,20 +30,15 @@ public class Kind2cafe extends Cafe {
 			else {
 			}
 		}
-	    
-	    
-	    System.out.print("Cafe Number: ");
-	    int number = input.nextInt();
-	    this.setNumber(number);
-	    
-	    System.out.print("Mood: ");
-	    String mood = input.next();
-	    this.setMood(mood);
-	    
-	    System.out.print("Dessert:");
-	    String dessert = input.next();
-	    this.setDessert(dessert);
+		setcafeNumber(input);
+		setcafeMood(input);
+		setcafeDessert(input);
 	}
-	
+	public void printInfo() {
+		String ckind = getKindString();
+		System.out.println("*kind:" + ckind +"*name: "+ name + " *location: " + Location + 
+				" *Number: " + number + " *Mood: "+ mood + " *Dessert: "+ Dessert);
+	}
+
 
 }

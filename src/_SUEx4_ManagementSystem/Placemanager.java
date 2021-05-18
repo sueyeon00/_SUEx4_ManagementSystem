@@ -1,61 +1,77 @@
 package _SUEx4_ManagementSystem;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import Cafe.CAfe_;
 import Cafe.Cafe;
+import Cafe.Cafe_Input;
 import Cafe.Cafekind;
+import Cafe.Kind2cafe;
+import Cafe.Kind3cafe;
 import Restaruant.Kind2res;
 import Restaruant.Kind3res;
+import Restaruant.REstaurant;
+import Restaruant.Res_Input;
 import Restaruant.Restaruant;
 import Restaruant.Restaurantkind;
 
 public class Placemanager {
-	ArrayList<Restaruant> restaruants = new ArrayList<Restaruant>();
-	ArrayList<Cafe> cafes = new ArrayList<Cafe>();
+	ArrayList<Res_Input> restaruants = new ArrayList<Res_Input>();
+	ArrayList<Cafe_Input> cafes = new ArrayList<Cafe_Input>();
 	Scanner input; 
-	Restaruant res = new Restaruant();  ////edit 에서 res.set();해주려고 만듦
-	Cafe cafe = new Cafe();             ////
+
 	Placemanager(Scanner input){
 		this.input = input;
 	}
 	
 	public void Arestaurant() {
 		int kind =0;
-		Restaruant res;
+		Res_Input resinput;
 		while(kind != 1 && kind != 2 && kind != 3) {
-			System.out.println("1 --> 학교 밖");
-			System.out.println("2 --> 학교 근처 ");
-			System.out.println("3 --> 그 외 ");
-			System.out.print("Select 1 , 2 or 3 !! ");
-			kind = input.nextInt();
-			if( kind == 1) {
-				res = new Restaruant(Restaurantkind.kind1);
-				res.getUserInput(input);
-				restaruants.add(res);            //리스트에 추가됨
-				break;
-			}
-			else if( kind == 2) {
-				res = new Kind2res(Restaurantkind.kind2);
-				res.getUserInput(input);
-				restaruants.add(res);            //리스트에 추가됨
-				break;
-			}
-			else if( kind == 3) {
-				res = new Kind3res(Restaurantkind.kind3);
-				res.getUserInput(input);
-				restaruants.add(res);            //리스트에 추가됨
-				break;
-			}
-			else {
+			try {
+				System.out.println("1 --> 학교 밖");
+				System.out.println("2 --> 학교 근처 ");
+				System.out.println("3 --> 그 외 ");
 				System.out.print("Select 1 , 2 or 3 !! ");
+				kind = input.nextInt();
+				if( kind == 1) {
+					resinput = new REstaurant(Restaurantkind.kind1);
+					resinput.getUserInput(input);
+					restaruants.add(resinput);            //리스트에 추가됨
+					break;
+				}
+				else if( kind == 2) {
+					resinput = new Kind2res(Restaurantkind.kind2);
+					resinput.getUserInput(input);
+					restaruants.add(resinput);            //리스트에 추가됨
+					break;
+				}
+				else if( kind == 3) {
+					resinput = new Kind3res(Restaurantkind.kind3);
+					resinput.getUserInput(input);
+					restaruants.add(resinput);            //리스트에 추가됨
+					break;
+				}
+				else {
+					System.out.print("Select 1 , 2 or 3 !! ");
+				}
 			}
+			catch(InputMismatchException e) {
+				System.out.println("1-3 사이의 숫자를 입력하시오.");
+				if(input.hasNext()) {
+					input.next();
+				}
+				kind = -1;
+			}
+			
 		}
 			    
 	}
 	public void Acafe() {
 		int kind = 0;
-		Cafe cafe;
+		Cafe_Input cafeinput;
 		while(kind != 1 && kind != 2 && kind != 3) {
 			System.out.println("1 --> 학교 밖");
 			System.out.println("2 --> 학교 근처 ");
@@ -63,24 +79,22 @@ public class Placemanager {
 			System.out.print("Select 1 , 2 or 3 !! ");
 			kind = input.nextInt();
 			if( kind == 1) {
-				cafe = new Cafe(Cafekind.kind1);
-				cafe.getUserInput(input);
-				cafes.add(cafe);            //리스트에 추가됨
+				cafeinput = new CAfe_(Cafekind.kind1);
+				cafeinput.getUserInput(input);
+				cafes.add(cafeinput);            //리스트에 추가됨
 				break;
 			}
 			else if( kind == 2) {
-				cafe = new Cafe(Cafekind.kind2);
-				cafe = new Cafe();
-				cafe.getUserInput(input);
-				cafes.add(cafe);            //리스트에 추가됨
+				cafeinput = new Kind2cafe(Cafekind.kind2);
+				cafeinput.getUserInput(input);
+				cafes.add(cafeinput);            //리스트에 추가됨
 				break;
 				
 			}
 			else if( kind == 3) {
-				cafe = new Cafe(Cafekind.kind3);
-				cafe = new Cafe();
-				cafe.getUserInput(input);
-				cafes.add(cafe);            //리스트에 추가됨
+				cafeinput = new Kind3cafe(Cafekind.kind3);
+				cafeinput.getUserInput(input);
+				cafes.add(cafeinput);            //리스트에 추가됨
 				break;
 			}
 			else {
@@ -93,87 +107,75 @@ public class Placemanager {
 	public void Rdelete() {
 		System.out.print("Place name: ");
 	    String Name = input.next();
-	    int index = -1;
-	    for( int i = 0; i<restaruants.size(); i++) {
-	    	if(restaruants.get(i).getName().equals(Name)) {
-		    	index = i;
-		    	break;
-		    }
-	    }
-	    if(index >= 0) {
+	    int index = findIndex(Name);
+	    remove_Restaurant(index, Name);
+	}
+	
+	public int remove_Restaurant(int index, String Name) {
+		if(index >= 0) {
 	    	restaruants.remove(index);
 	    	System.out.println("the restaruant <"+ Name+ "> is deleted");
 	    }
 	    else
 	    	System.out.println("the restaruant not registered");
-	    	return;
-	    }
+	    	return -1;
+	}
 	    
-	
 	public void Cdelete() {
 		System.out.print("Place name: ");
 	    String Name = input.next();
-	    int index = -1;
-	    for( int i = 0; i < cafes.size(); i++) {
-	    	if(cafes.get(i).getName().equals(Name)) {
-	    		index = i;
-	    		break;
-	    	}
-	    }
-	    	
-	    if(index >= 0) {
+	    int index = findIndex(Name);
+	    remove_Cafe(index, Name);
+	}
+	public int remove_Cafe(int index, String Name) {
+		if(index >= 0) {
 	    	cafes.remove(index);
 	    	System.out.println("the cafe <" + Name +"> is deleted");
-	    	return;
 	    }           
 	    else
 	    	System.out.println("the cafe not registered");
-	    return;
-	    };
+	    return -1;
+	}
 	
+	public int findIndex(String Name) {
+		int index = -1;
+		for( int i = 0; i<restaruants.size(); i++) {
+	    	if(restaruants.get(i).getName().equals(Name)) {
+		    	index = i;
+		    	break;
+	    	}
+		}
+		return index;
+	}
 	public void Redit() { 
 		System.out.print("Place name: ");
 	    String Name = input.next();
 	    for( int i = 0; i<restaruants.size(); i++){
+	    	Res_Input resinput = restaruants.get(i);
 	    	if(restaruants.get(i).getName().equals(Name)) {
 	    		int num = -1;
 	    		while(num != 6) {
-		    		System.out.println("*** Restaurant Info Edit Menu ***");
-		    		System.out.println(" 1. Edit name");
-		    		System.out.println(" 2. Edit location");
-		    		System.out.println(" 3. Edit number");
-		    		System.out.println(" 4. Edit type");
-		    		System.out.println(" 5. Edit maindish");
-		    		System.out.println(" 6. Exit");
+	    			showEditMenu_R();
 		    		num = input.nextInt();
-		    		if(num == 1) {
-		    			System.out.print("Restaurant name: ");
-		    			String name = input.next();
-		    			res.setName(name);
-		    		}
-		    		else if( num == 2) {
-		    			System.out.print("Restaurant Location:");	
-		    		    String Location = input.next();
-		    		    res.setLocation(Location);
-		    		}
-		    		else if( num == 3) {
-		    			System.out.print("Restaurant Number: ");
-		    		    int number = input.nextInt();
-		    		    res.setNumber(number);
-		    		}
-		    		else if( num == 4) {
-		    			System.out.print("Type of food:");			    
-		    		    String Type = input.next();
-		    		    res.setType(Type);
-		    		}
-		    		else if( num == 5) {
-		    			System.out.print("Main Dish:");
-		    			String MainDish = input.next();
-		    		    res.setMainDish(MainDish);
-		    		}
-		    		else {
+		    		switch(num) {
+		    		case 1:
+		    			resinput.setResName(input);
+		    			break;
+		    		case 2:
+		    			resinput.setResLocation(input);
+		    			break;
+		    		case 3:
+		    			resinput.setResNumber(input);
+		    			break;
+		    		case 4:
+		    			resinput.setResType(input);
+		    			break;
+		    		case 5:
+		    			resinput.setResMain(input);
+		    			break;
+		    		default:
 		    			continue;
-		    		}//if
+		    		}
 	    		}//while
 	    		System.out.println("the restaurant to be edited is "+"<"+ Name +">");
 	    		break;
@@ -186,45 +188,31 @@ public class Placemanager {
 		System.out.print("Place name: ");
 	    String Name = input.next();
 	    for( int i = 0; i<cafes.size(); i++){
+	    	Cafe_Input cafeinput = cafes.get(i);
 	    	if(cafes.get(i).getName().equals(Name)) {
 	    		int num = -1;
 	    		while(num != 6) {
-		    		System.out.println("*** Cafe Info Edit Menu ***");
-		    		System.out.println(" 1. Edit name");
-		    		System.out.println(" 2. Edit location");
-		    		System.out.println(" 3. Edit number");
-		    		System.out.println(" 4. Edit mood");
-		    		System.out.println(" 5. Edit dessert");
-		    		System.out.println(" 6. Exit");
+	    			showEditMenu_C();
 		    		num = input.nextInt();
-		    		if(num == 1) {
-		    			System.out.print("Restaurant name: ");
-		    			String name = input.next();
-		    			cafe.setName(name);
-		    		}
-		    		else if( num == 2) {
-		    			System.out.print("Restaurant Location:");			    
-		    		    String Location = input.next();
-		    		    cafe.setLocation(Location);
-		    		}
-		    		else if( num == 3) {
-		    			System.out.print("Restaurant Number: ");
-		    		    int number = input.nextInt();
-		    		    cafe.setNumber(number);
-		    		}
-		    		else if( num == 4) {
-		    			System.out.print("Type of mood:");			    
-		    		    String mood = input.next();
-		    		    cafe.setMood(mood);
-		    		}
-		    		else if( num == 5) {
-		    			System.out.print("dessert:");
-		    		    String Dessert = input.next();
-		    		    cafe.setDessert(Dessert);
-		    		}
-		    		else {
+		    		switch(num) {
+		    		case 1:
+		    			cafeinput.setcafeName(input);
+		    			break;
+		    		case 2:
+		    			cafeinput.setcafeLocation(input);
+		    			break;
+		    		case 3:
+		    			cafeinput.setcafeNumber(input);
+		    			break;
+		    		case 4:
+		    			cafeinput.setcafeMood(input);
+		    			break;
+		    		case 5:
+		    			cafeinput.setcafeDessert(input);
+		    			break;
+		    		default:
 		    			continue;
-		    		}//if
+		    		}
 	    		}//while
 	    		System.out.println("the cafe to be edited is "+"<"+ Name +">");
 	    		break;
@@ -245,5 +233,30 @@ public class Placemanager {
 	    	cafes.get(i).printInfo();
 	    }
 	}
+	
+	
+	
+	
+	
+	public void showEditMenu_R() {
+		System.out.println("*** Restaurant Info Edit Menu ***");
+		System.out.println(" 1. Edit name");
+		System.out.println(" 2. Edit location");
+		System.out.println(" 3. Edit number");
+		System.out.println(" 4. Edit type");
+		System.out.println(" 5. Edit maindish");
+		System.out.println(" 6. Exit");
+	}
+	public void showEditMenu_C() {
+		System.out.println("*** Cafe Info Edit Menu ***");
+		System.out.println(" 1. Edit name");
+		System.out.println(" 2. Edit location");
+		System.out.println(" 3. Edit number");
+		System.out.println(" 4. Edit mood");
+		System.out.println(" 5. Edit dessert");
+		System.out.println(" 6. Exit");
+	}
+	
+	
 	    
 }

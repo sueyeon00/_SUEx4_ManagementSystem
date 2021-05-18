@@ -2,24 +2,20 @@ package Cafe;
 
 import java.util.Scanner;
 
-public class Kind3cafe extends Cafe{
+public class CAfe_ extends Cafe{
 	
-	public Kind3cafe(Cafekind kind) {
+	public CAfe_(Cafekind kind) {
 		super(kind);
-   	}
-	protected String Location_Area;
+	}
 	
+
 	public void getUserInput(Scanner input) {
 		setcafeName(input);
-		
-		System.out.print("지역 이름 (Area): ");
-		String area = input.next();
-		this.setLocation(area); 
-		
+		setcafeLocation(input);
 		setcafeNumber(input);
 		setcafeMood(input);
 		setcafeDessert(input);
-	    
+
 	}
 	
 	public void printInfo() {
