@@ -1,5 +1,6 @@
 package _SUEx4_ManagementSystem;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -17,10 +18,15 @@ import Restaruant.Res_Input;
 import Restaruant.Restaruant;
 import Restaruant.Restaurantkind;
 
-public class Placemanager {
+public class Placemanager implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8228647714535001091L;
+	
 	ArrayList<Res_Input> restaruants = new ArrayList<Res_Input>();
 	ArrayList<Cafe_Input> cafes = new ArrayList<Cafe_Input>();
-	Scanner input; 
+	transient Scanner input; 
 
 	Placemanager(Scanner input){
 		this.input = input;

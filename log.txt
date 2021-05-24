@@ -1,0 +1,2 @@
+5월 22, 2021 3:57:13 오후 log.EventLogger log
+INFO: view a restaurant list

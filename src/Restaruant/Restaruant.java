@@ -1,11 +1,16 @@
 package Restaruant;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.NumberfomatException;
 
-public abstract class Restaruant implements Res_Input{
+public abstract class Restaruant implements Res_Input, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6147579756796010019L;
 	protected Restaurantkind kind = Restaurantkind.kind1;  //kind1 이 기본
 	protected String name;      //protected 는 자식 클래스에는 상속되는데 그 외 외부 클래스에선 접근 불가
 	protected String Location;

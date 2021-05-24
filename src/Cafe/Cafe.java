@@ -1,11 +1,16 @@
 package Cafe;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.NumberfomatException;
 
-public abstract class Cafe implements Cafe_Input{
+public abstract class Cafe implements Cafe_Input, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5230751173188381691L;
 	protected Cafekind kind = Cafekind.kind1;
 	protected String name;
 	protected String Location;
