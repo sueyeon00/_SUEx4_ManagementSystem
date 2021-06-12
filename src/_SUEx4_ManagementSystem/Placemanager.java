@@ -241,7 +241,19 @@ public class Placemanager implements Serializable{
 	}
 	
 	
+	public int size1() {
+		return restaruants.size();
+	}
+	public int size2() {
+		return cafes.size();
+	}
 	
+	public Res_Input get1(int index){
+		return (Restaruant) restaruants.get(index);
+	}
+	public Cafe_Input get(int index) {
+		return(Cafe) cafes.get(index);
+	}
 	
 	
 	public void showEditMenu_R() {

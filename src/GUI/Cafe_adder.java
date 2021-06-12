@@ -7,9 +7,13 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
-public class Cafe_adder extends JFrame {
+public class Cafe_adder extends JPanel {
 	
-	public Cafe_adder() {
+	WindowFrame frame;
+	
+	public Cafe_adder(WindowFrame frame) {
+		this.frame = frame;
+		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
 		
@@ -52,8 +56,8 @@ public class Cafe_adder extends JFrame {
 		
 		SpringUtilities.makeCompactGrid(panel, 6, 2, 6, 6, 6, 6);
 		
-		this.setSize(300, 300);
-		this.setContentPane(panel);
+ 
+		this.add(panel);
 		this.setVisible(true);
 	}
 	

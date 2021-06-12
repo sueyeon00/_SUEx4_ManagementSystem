@@ -7,11 +7,19 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class MenuSelection extends JFrame {
+import Listners.ButtonAddListener;
+import Listners.ButtonAddListener2;
+import Listners.ButtonViewListener;
+
+public class MenuSelection extends JPanel {
 	
-	public MenuSelection() {
-		this.setSize(300,300);
-		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	WindowFrame frame;
+	
+	public MenuSelection(WindowFrame frame) {
+		this.frame = frame;
+		
+		this.setLayout(new BorderLayout());
+		
 		JPanel panel1 = new JPanel();
 		JPanel panel2 = new JPanel();
 		
@@ -24,7 +32,9 @@ public class MenuSelection extends JFrame {
 		JButton B5 = new JButton("view place");
 		JButton B6 = new JButton("EXIT");
 		
-		
+		B1.addActionListener(new ButtonAddListener(frame));
+		B2.addActionListener(new ButtonAddListener2(frame));
+		B5.addActionListener(new ButtonViewListener(frame));
 		
 		panel1.add(label);
 		panel2.add(B1);
@@ -37,7 +47,7 @@ public class MenuSelection extends JFrame {
 		this.add(panel1, BorderLayout.NORTH);
 		this.add(panel2, BorderLayout.CENTER);
 	
-		this.setVisible(true);
+
 		
 	}
 

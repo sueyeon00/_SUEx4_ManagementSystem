@@ -9,6 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import GUI.WindowFrame;
 import log.EventLogger;
 
 public class MenuManager {
@@ -24,6 +25,8 @@ public class MenuManager {
 			placemanager = new Placemanager(input);
 		}
 		
+		
+		WindowFrame frame = new WindowFrame(placemanager);
 		selectMenu(input, placemanager);
 		putObject(placemanager, "placemanager.ser");
 		

@@ -1,2 +1,2 @@
-5월 22, 2021 3:57:13 오후 log.EventLogger log
+6월 13, 2021 1:20:08 오전 log.EventLogger log
 INFO: view a restaurant list

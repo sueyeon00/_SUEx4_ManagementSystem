@@ -12,12 +12,16 @@ public interface Cafe_Input {
 	
 	public void setName(String name);
 	
+	public String getLocation();
 	public void setLocation(String location);
 	
+	public int getNumber();
 	public void setNumber(int number) throws NumberfomatException;
 	
+	public String getMood();
 	public void setMood(String mood);
 	
+	public String getDessert();
 	public void setDessert(String dessert);
 	
 	public void printInfo();

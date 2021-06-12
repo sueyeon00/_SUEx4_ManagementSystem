@@ -12,12 +12,16 @@ public interface Res_Input {
 	
 	public void setName(String name);
 	
+	public String getLocation();
 	public void setLocation(String location);
 	
+	public int getNumber();
 	public void setNumber(int number) throws NumberfomatException;
 	
+	public String getType();
 	public void setType(String type);
 	
+	public String getMainDish();
 	public void setMainDish(String mainDish);
 	
 	public void printInfo();
