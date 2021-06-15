@@ -32,6 +32,15 @@ public class Placemanager implements Serializable{
 		this.input = input;
 	}
 	
+	public void Arestaurant(String name, String location,
+			String number, String type, String main) {
+		Res_Input resinput = new REstaurant(Restaurantkind.kind1);
+		resinput.getUserInput(input);
+		restaruants.add(resinput); 
+	}
+	public void Arestaurant(Res_Input resinput) {
+		restaruants.add(resinput); 
+	}
 	public void Arestaurant() {
 		int kind =0;
 		Res_Input resinput;
@@ -74,6 +83,15 @@ public class Placemanager implements Serializable{
 			
 		}
 			    
+	}
+	public void Acafe(String name, String location,
+			String number, String mood, String dessert) {
+		Cafe_Input cafeinput = new CAfe_(Cafekind.kind1);
+		cafeinput.getUserInput(input);
+		cafes.add(cafeinput);  
+	}
+	public void Acafe(Cafe_Input cafeinput) {
+		cafes.add(cafeinput);  
 	}
 	public void Acafe() {
 		int kind = 0;

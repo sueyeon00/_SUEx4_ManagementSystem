@@ -7,12 +7,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import Listners.CafeAdderListener;
+import Listners.PlaceAdderCancleListener;
+import _SUEx4_ManagementSystem.Placemanager;
+
 public class Cafe_adder extends JPanel {
 	
 	WindowFrame frame;
+	Placemanager placemanager;
 	
-	public Cafe_adder(WindowFrame frame) {
+	public Cafe_adder(WindowFrame frame, Placemanager placemanager) {
 		this.frame = frame;
+		this.placemanager = placemanager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -48,11 +54,19 @@ public class Cafe_adder extends JPanel {
 		JLabel labelD = new JLabel("Dessert: ", JLabel.TRAILING);
 		JTextField fieldD = new JTextField(10);
 		labelD.setLabelFor(fieldD);
+		
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new CafeAdderListener(fieldN, fieldL,
+				fieldNum, fieldM, fieldD, placemanager));
+		
+		JButton cancleButton = new JButton("cancle");
+		cancleButton.addActionListener(new PlaceAdderCancleListener(frame));
+		
 		panel.add(labelD);
 		panel.add(fieldD);
 		
-		panel.add(new JButton("save"));
-		panel.add(new JButton("cancel"));
+		panel.add(saveButton);
+		panel.add(cancleButton);
 		
 		SpringUtilities.makeCompactGrid(panel, 6, 2, 6, 6, 6, 6);
 		

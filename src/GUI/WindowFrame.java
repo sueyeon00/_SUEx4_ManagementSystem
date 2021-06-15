@@ -20,8 +20,8 @@ public class WindowFrame extends JFrame{
 		 
 		
 	    this.placemanager = placemanager;
-	    this.resadder = new Res_adder(this);
-	    this.cafeadder = new Cafe_adder(this);
+	    this.resadder = new Res_adder(this, this.placemanager);
+	    this.cafeadder = new Cafe_adder(this, this.placemanager);
 	    this.placeviewer = new Place_Viewer(this, this.placemanager);
 		this.menuselection = new MenuSelection(this);
 

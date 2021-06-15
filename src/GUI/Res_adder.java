@@ -7,12 +7,18 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import Listners.PlaceAdderCancleListener;
+import Listners.ResAdderListener;
+import _SUEx4_ManagementSystem.Placemanager;
+
 public class Res_adder extends JPanel {
 	
 	WindowFrame frame;
+	Placemanager placemanager;
 	
-	public Res_adder(WindowFrame frame){
+	public Res_adder(WindowFrame frame, Placemanager placemanager){
 		this.frame = frame;
+		this.placemanager = placemanager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -48,11 +54,19 @@ public class Res_adder extends JPanel {
 		JLabel labelM = new JLabel("Main Dish: ", JLabel.TRAILING);
 		JTextField fieldM = new JTextField(10);
 		labelM.setLabelFor(fieldM);
+		
+		JButton saveButton = new JButton("save");
+		saveButton.addActionListener(new ResAdderListener(fieldN, fieldL,
+				fieldNum, fieldT, fieldM, placemanager));
+		
+		JButton cancleButton = new JButton("cancle");
+		cancleButton.addActionListener(new PlaceAdderCancleListener(frame));
+		
 		panel.add(labelM);
 		panel.add(fieldM);
 		
-		panel.add(new JButton("save"));
-		panel.add(new JButton("cancel"));
+		panel.add(saveButton);
+		panel.add(cancleButton);
 		
 		SpringUtilities.makeCompactGrid(panel, 6, 2, 6, 6, 6, 6);
 		
